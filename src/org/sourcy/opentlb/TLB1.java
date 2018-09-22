@@ -1,6 +1,6 @@
 package org.sourcy.opentlb;
 
-public class OpenTLB01 {
+public class TLB1 {
 
 	private static long lastFPSCheck = 0;
 	private static int currentFPS = 0;
