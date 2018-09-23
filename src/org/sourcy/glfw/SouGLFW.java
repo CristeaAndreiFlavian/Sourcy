@@ -22,7 +22,7 @@ public class SouGLFW implements SV, TLB {
 		this.winTitle = "Sourcy Addon";
 	}
 	
-	public static void createWindow(long displayFPSInConsole) {
+	public static void createWindow() {
 		//Getting versions of Sourcy and other things.
 		DebugLogger.logInfo(Version.getVersion());
 		SV.getVersion();
@@ -54,26 +54,18 @@ public class SouGLFW implements SV, TLB {
 		
 		//Showing the window
 		GLFW.glfwShowWindow(window);
-		
-		//Handling the window
+	}
+	
+	public static void handleWindow() {
 		while (!isClosed()) {
-			handleWindow();
-			
-			//Checking if the long is "999999999"
-			if (displayFPSInConsole == TLB1.TLB_TRUE_LONG) {
-				DebugLogger.customInfo("FPS: "+TLB1.getFPS(), 000000000);
-			}
-			
+			//Handling the window
+			GLFW.glfwSwapBuffers(window);
+			GLFW.glfwPollEvents();
 			//Checking when the window is closed
 			if (isClosed()) {
 				closeWindow(0);
 			}
 		}
-	}
-	
-	private static void handleWindow() {
-		GLFW.glfwSwapBuffers(window);
-		GLFW.glfwPollEvents();
 	}
 	
 	public static void show(int visible) {
@@ -92,6 +84,18 @@ public class SouGLFW implements SV, TLB {
 		if (resizable == TLB1.TLB_FALSE_INT) {
 			GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_FALSE);
 		}
+	}
+	
+	public static int getWidth() {
+		return winWidth;
+	}
+	
+	public static int getHeight() {
+		return winHeight;
+	}
+	
+	public static String getTitle() {
+		return winTitle;
 	}
 	
 	public static void setPosition(int xpos, int ypos) {
@@ -123,6 +127,10 @@ public class SouGLFW implements SV, TLB {
 	
 	public static long getWindow() {
 		return window;
+	}
+
+	public int getFPS() {
+		return TLB1.getFPS();
 	}
 	
 }
