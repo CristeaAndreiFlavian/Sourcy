@@ -1,3 +1,8 @@
-bin/
-.settings/
+bin/*
+.settings/*
+./bin
+./bin/*
+./bin/*.class
+./bin/*/*/*/*
+./bin/*/*/*/*.class
 .classpath

@@ -1,6 +1,9 @@
 package org.sourcy;
 
 import org.sourcy.glfw.SouGLFW;
+import org.sourcy.shared.SYImpl;
+
+import static org.sourcy.shared.SY10.*;
 
 public class Sourcy {
 
@@ -11,7 +14,7 @@ public class Sourcy {
 		glfw = new SouGLFW(620, 480);
 		sourcy.init(glfw);
 		sourcy.initComponents(glfw);
-		
+		glfw.show();
 		while (true) {
 			try {
 				sourcy.update(glfw);
@@ -24,7 +27,9 @@ public class Sourcy {
 	}
 	
 	protected void initComponents(SouGLFW win) {
-		
+		sySetImplementation(SYImpl.OPENGL);
+		syInit(SouGLFW.getPrimaryMonitor(), win);
+		System.out.println("Inited with OPENGL and " + SouGLFW.getPrimaryMonitor() + " monitor ID");
 	}
 	
 	public void update(SouGLFW win) {

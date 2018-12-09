@@ -20,6 +20,10 @@ public class SouGLFW {
 		this.winTitle = "Sourcy Addon";
 	}
 	
+	public static long getPrimaryMonitor() {
+		return GLFW.glfwGetPrimaryMonitor();
+	}
+	
 	static void initGLFW() {
 		inited = GLFW.glfwInit();
 		if (!inited) {
@@ -50,9 +54,6 @@ public class SouGLFW {
 		
 		//Setting the window position
 		GLFW.glfwSetWindowPos(window, (videoMode.width() - winWidth) / 2, (videoMode.height() - winHeight) / 2);
-		
-		//Showing the window
-		show();
 	}
 	
 	public void handleWindow() {
@@ -60,10 +61,6 @@ public class SouGLFW {
 			//Handling the window
 			GLFW.glfwSwapBuffers(window);
 			GLFW.glfwPollEvents();
-			//Checking when the window is closed
-			if (isClosed()) {
-				
-			}
 		}
 	}
 	
